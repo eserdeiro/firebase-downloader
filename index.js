@@ -88,7 +88,7 @@ async function main() {
     const url = await getBaseUrl();
     const bucketName = extractBucketName(url);
 
-    const downloadDirectory = path.join(__dirname, 'firebase-downloader', bucketName);
+    const downloadDirectory = path.join(__dirname, 'firebase-storage-downloader', bucketName);
     console.log(`Fetching items from: ${url}`);
     console.log(`Downloading to: ${downloadDirectory}`);
 

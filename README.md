@@ -57,5 +57,5 @@ https://firebasestorage.googleapis.com/v0/b/downloader-test-3c7ac.appspot.com/o
 
 The files will be saved in:
 ```
-./firebase-downloader/downloader-test/
+./firebase-storage-downloader/downloader-test/
 ```
