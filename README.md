@@ -2,6 +2,13 @@
 
 This project provides a script to download all files from a given Firebase Storage bucket. It organizes the downloaded files into structured directories according to the bucket name.
 
+## Benefits
+
+- **Bulk Downloading**: The script enables you to download entire directories or all files from a Firebase Storage bucket in one operation, avoiding the need to manually download files one at a time.
+- **Preserves Directory Structure**: It maintains the original folder structure from Firebase Storage during the download process, organizing files neatly and ensuring consistency between the bucket and your local environment.
+- **Efficient Management**: By automating the download process, the script reduces the time spent managing large numbers of files and helps prevent human errors that can occur with manual downloads.
+- **Error Handling**: The script includes basic error handling for common issues like network interruptions or missing files, ensuring a smoother download process.
+
 ## Prerequisites
 
 - Node.js and npm installed. You can download it from [Node.js](https://nodejs.org/).

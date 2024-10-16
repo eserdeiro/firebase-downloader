@@ -13,6 +13,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+
 // Prompt the user for the URL if not configured in the environment
 function askForUrl() {
     return new Promise((resolve) => {
