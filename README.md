@@ -1,7 +1,6 @@
 # Firebase Storage Downloader
 
-This project provides a script to download all files from a given Firebase Storage bucket. 
-It organizes the downloaded files into structured directories according to the bucket name.
+This project provides a script to download all files from a given Firebase Storage bucket. It organizes the downloaded files into structured directories according to the bucket name.
 
 ## Prerequisites
 
@@ -17,8 +16,20 @@ It organizes the downloaded files into structured directories according to the b
 2. Open a terminal and navigate to the project directory.
 3. Install the required dependencies by running:
    ```bash
-   npm install axios fs-extra path
+   npm install axios fs-extra path readline dotenv
    ```
+
+## Configuration
+
+The script allows two ways to provide the Firebase Storage URL:
+
+1. **.env File**: Create a `.env` file in the project root and add the Firebase Storage URL as follows:
+   ```
+   FIREBASE_STORAGE_URL=https://firebasestorage.googleapis.com/v0/b/<your-bucket-name>.appspot.com/o
+   ```
+   Make sure to install the `dotenv` package to load environment variables from the `.env` file.
+
+2. **Manual Input**: If the `.env` file is not set or the variable is not defined, the script will prompt you to enter the Firebase Storage URL when it runs.
 
 ## Usage
 
@@ -27,17 +38,11 @@ It organizes the downloaded files into structured directories according to the b
    node index.js
    ```
 
-2. **Option 1**: Predefine the Firebase Storage URL inside the script.
-   - Open `index.js` and set the `baseUrl` variable to your Firebase Storage URL:
-     ```javascript
-     let baseUrl = 'https://firebasestorage.googleapis.com/v0/b/<your-bucket-name>.appspot.com/o';
-     ```
+2. If no URL is predefined via the `.env` file, you will be prompted to enter the Firebase Storage URL.
 
-3. **Option 2**: If no URL is predefined, the script will prompt you to enter the Firebase Storage URL.
-
-4. The downloaded files will be saved in:
+3. The downloaded files will be saved in the following directory structure:
    ```
-   ./firebase-downloader/<bucket-name>/
+   ./firebase-storage-downloader/<bucket-name>/
    ```
 
 ## Error Handling
@@ -59,3 +64,27 @@ The files will be saved in:
 ```
 ./firebase-storage-downloader/downloader-test/
 ```
+
+## Notes
+
+- The script uses pagination to ensure all items are fetched from the Firebase Storage bucket.
+- It creates directories as needed to match the structure of the bucket and saves each file accordingly.
+
+## Dependencies
+
+The following dependencies are used in this script:
+
+- **axios**: To make HTTP requests to Firebase Storage.
+- **fs-extra**: To handle file system operations, such as ensuring directories exist.
+- **path**: To work with file and directory paths.
+- **readline**: To handle user input when the URL is not predefined.
+- **dotenv**: To load environment variables from a `.env` file.
+
+## Environment Variables
+
+To run the script without manual input, you can set the following environment variable in a `.env` file:
+- `FIREBASE_STORAGE_URL`: The URL of your Firebase Storage bucket.
+
+## License
+
+This project is licensed under the MIT License.

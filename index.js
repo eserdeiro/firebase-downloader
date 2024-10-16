@@ -1,10 +1,11 @@
+require('dotenv').config();
 const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 const readline = require('readline');
 
-// Set the URL here if you prefer not to prompt the user
-let baseUrl = '';
+// Get the base URL from .env file or set it to an empty string
+let baseUrl = process.env.FIREBASE_STORAGE_URL || '';
 
 // Readline configuration to capture user input
 const rl = readline.createInterface({
@@ -12,7 +13,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-// Prompt the user for the URL if not configured in the code
+// Prompt the user for the URL if not configured in the environment
 function askForUrl() {
     return new Promise((resolve) => {
         rl.question('Enter your Firebase Storage URL: ', (url) => {
